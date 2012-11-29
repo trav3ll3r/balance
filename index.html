@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" ng-app>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+
+    <title>Balance</title>
+
+    <link rel="stylesheet" href="css/balance.css">
+
+    <script type="text/javascript" src="scripts/library/angular.min.js"></script>
+
+    <script type="text/javascript" src="scripts/library/angular/controllers.js"></script>
+
+    <script type="text/javascript" src="scripts/data/baseModifiers.js"></script>
+    <script type="text/javascript" src="scripts/globals.js"></script>
+    <script type="text/javascript" src="scripts/models/models.js"></script>
+</head>
+<body>
+
+    <div class="siteSandbox">
+
+        <div id="forecastingList" style="">
+
+        </div>
+
+        <div id="baseModifiers">
+            <div ng-controller="BaseModifiersList">
+                <div ng-repeat="mod in mods" class="baseModifier">
+                    <div>
+                        <div class="fLeft bold">{{ mod.title }}</div>
+                        <div class="clearBoth"></div>
+                        <div class="fRight amount">{{ text=mod.modType }} {{ mod.amount }}</div>
+                        <div class="clearBoth"></div>
+                    </div>
+                    <div class="fRight frequency">{{ mod.frequency }}</div>
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearBoth"></div>
+    </div>
+
+
+</body>
+</html>

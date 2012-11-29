@@ -1,0 +1,28 @@
+body { margin:0; padding:0 }
+div { margin:0; padding:0 }
+span { margin:0; padding:0 }
+a { margin:0; padding:0 }
+
+body { font-family:Verdana,serif; font-size:12px; background-color:#efefef; }
+
+.siteSandbox { width:900px; margin:0 auto; background-color:#b0c4de; }
+.fLeft { float:left; }
+.fRight { float:right; }
+.clearBoth { clear:both; height:0; width:0; }
+.bold { font-weight:bold; }
+
+#forecastingList
+{
+    float:left; width:400px; height:500px; overflow:hidden; border:1px solid black; color:#000000;
+    padding:4px;
+}
+
+#baseModifiers
+{
+    float:right; width:200px; height:500px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
+    padding:4px;
+}
+
+div.baseModifier { background-color:#fafad2; border:1px solid #5f9ea0; margin-bottom:2px; padding:2px; }
+div.baseModifier .amount { font-size:11px; }
+div.baseModifier .frequency { font-size:10px; }
