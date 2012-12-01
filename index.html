@@ -35,7 +35,6 @@
                             <td class="frequency" style="width:80px;">{{ mod.getFormattedDate() }}</td>
                             <td class="title">{{ mod.title }}</td>
                             <td class="amount" ng-class="{negative: mod.getAmountValue()<0}">{{ mod.getFormattedAmount() }}</td>
-                            <!--<td class="balance" ng-class="{negative: mod.balanceAfterModifier<0}">{{ mod.getFormattedBalanceAfterModifier() }}</td>-->
                         </tr>
                         <tr class="accountModifier">
                             <td colspan="3" class="balance bottomBorder" ng-class="{negative: mod.balanceAfterModifier<0}">{{ mod.getFormattedBalanceAfterModifier() }}</td>
