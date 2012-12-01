@@ -1,27 +1,23 @@
-function AccountBalance()
-{
-    var self = this;
-    self.dateGroups = [];
-    self.currentBalance = 1000; //TODO: get initial value from text input (user provided)
-
-    self.addModifier = function(accountModifier)
-    {
-        /* updated current balance and balance after modifier */
-        self.currentBalance = self.currentBalance + accountModifier.getAmountValue();
-        accountModifier.balanceAfterModifier = self.currentBalance;
-
-        /* add account balance to the list */
-        self.dateGroups[self.dateGroups.length] = accountModifier;
-    };
-
-    return self;
-}
-
 function AccountModifier(model)
 {
     var self = this;
 
-    self = model;
+    //self.id = utils.getGUID();
+
+    /* clone properties */
+    self.title     = model.title;
+    self.modType   = model.modType;
+    self.amount    = model.amount;
+    self.frequency = model.frequency;
+    self.startDate = model.startDate;
+    self.endDate   = model.endDate;
+
+    /* clone functions */
+    self.getAmountValue     = model.getAmountValue;
+    self.getFormattedAmount = model.getFormattedAmount;
+
+
+
     self.balanceAfterModifier = null;
     self.getFormattedBalanceAfterModifier = function()
     {
@@ -32,7 +28,7 @@ function AccountModifier(model)
 
         if (self.balanceAfterModifier != null)
         {
-            result = currencySymbol + self.balanceAfterModifier.toFixed(2);
+            result = currencySymbol + Math.abs(self.balanceAfterModifier).toFixed(2);
             if (self.balanceAfterModifier < 0)
             {
                 result = '-' + result;
@@ -56,7 +52,8 @@ function getAccountModifiers(scenario)
     var result;
     accountBalance = generateAccountModifiers(scenario);
 
-    result = accountBalance.dateGroups;
+    //result = accountBalance.dateGroups;
+    result = accountBalance;
     return result;
 }
 
@@ -66,20 +63,16 @@ function generateAccountModifiers(scenario)
     var baseModifier;
     var accountModifier;
     var result = new AccountBalance();
-    var i;
+    var i, j;
 
-    for (i = 0; i < baseModifiers.length; i++)
+    for (i = 0; i < 3; i++)
     {
-        baseModifier = baseModifiers[i];
-        accountModifier = new AccountModifier(baseModifier);
-        result.addModifier(accountModifier);
-    }
-
-    for (i = 0; i < baseModifiers.length; i++)
-    {
-        baseModifier = baseModifiers[i];
-        accountModifier = new AccountModifier(baseModifier);
-        result.addModifier(accountModifier);
+        for (j = 0; j < baseModifiers.length; j++)
+        {
+            baseModifier = baseModifiers[j];
+            accountModifier = new AccountModifier(baseModifier);
+            result.addModifier(accountModifier);
+        }
     }
 
     return result;

@@ -7,5 +7,6 @@ function AccountModifiersList($scope)
 {
     var scenario = new Scenario('main');
 
-    $scope.mods = getAccountModifiers(scenario);
+    $scope.accMods = getAccountModifiers(scenario).dateGroups;
+    $scope.accountBalance = getAccountModifiers(scenario);
 }

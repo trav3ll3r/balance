@@ -18,6 +18,7 @@
 
     <script type="text/javascript" src="scripts/data/baseModifiers.js"></script>
     <script type="text/javascript" src="scripts/data/accountModifiers.js"></script>
+    <script type="text/javascript" src="scripts/data/accountBalance.js"></script>
 
     <script type="text/javascript" src="scripts/models/modifierType.js"></script>
     <script type="text/javascript" src="scripts/models/frequency.js"></script>
@@ -30,14 +31,19 @@
         <div id="forecastingList">
             <div ng-controller="AccountModifiersList">
                 <table class="accountModifiersTable" cellpadding="0" cellspacing="0">
-                    <tbody ng-repeat="mod in mods">
+                    <tr class="accountModifier">
+                        <td colspan="1" class="title bottomBorder">{{ accountBalance.getFormattedStartingDate() }}</td>
+                        <td colspan="1" class="title bottomBorder">Starting balance:</td>
+                        <td colspan="1" class="balance bottomBorder" ng-class="{negative: accountBalance.startingBalance<0}">{{ accountBalance.getFormattedStartingBalance() }}</td>
+                    </tr>
+                    <tbody ng-repeat="accMod in accMods">
                         <tr class="accountModifier">
-                            <td class="frequency" style="width:80px;">{{ mod.getFormattedDate() }}</td>
-                            <td class="title">{{ mod.title }}</td>
-                            <td class="amount" ng-class="{negative: mod.getAmountValue()<0}">{{ mod.getFormattedAmount() }}</td>
+                            <td class="date" style="width:80px;">{{ accMod.getFormattedDate() }}</td>
+                            <td class="title" ><div>{{ accMod.title }}</div></td>
+                            <td class="amount" ng-class="{negative: accMod.getAmountValue()<0}">{{ accMod.getFormattedAmount() }}</td>
                         </tr>
                         <tr class="accountModifier">
-                            <td colspan="3" class="balance bottomBorder" ng-class="{negative: mod.balanceAfterModifier<0}">{{ mod.getFormattedBalanceAfterModifier() }}</td>
+                            <td colspan="3" class="balance bottomBorder" ng-class="{negative: accMod.balanceAfterModifier<0}">{{ accMod.getFormattedBalanceAfterModifier() }}</td>
                         </tr>
                     </tbody>
                 </table>

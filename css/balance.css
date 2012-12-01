@@ -13,14 +13,16 @@ body { font-family:Verdana,serif; font-size:12px; background-color:#efefef; }
 
 #forecastingList
 {
-    float:left; width:400px; height:500px; overflow:hidden; border:1px solid black; color:#000000;
+    float:left; width:420px; height:500px; overflow:hidden; border:1px solid black; color:#000000;
     padding:4px;
+    overflow:auto;
 }
 
 #baseModifiers
 {
     float:right; width:200px; height:500px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
     padding:4px;
+    overflow:auto;
 }
 
 div.baseModifier { background-color:#fafad2; border:1px solid #5f9ea0; margin-bottom:2px; padding:2px; }
@@ -28,10 +30,11 @@ div.baseModifier .amount { font-size:11px; color:#006400; }
 div.baseModifier .amount.negative { color:#8b0000; }
 div.baseModifier .frequency { font-size:10px; }
 
-table.accountModifiersTable { border:2px solid #5f9ea0; border-bottom: 0; font-size:11px; }
+table.accountModifiersTable { width:400px; border:2px solid #5f9ea0; border-bottom: 0; font-size:11px; }
 tr.accountModifier td { background-color:#fafad2; padding:2px 2px 3px 2px; }
 tr.accountModifier td.bottomBorder { border-bottom:2px solid #5f9ea0; }
 tr.accountModifier .title { width:170px; }
+tr.accountModifier .title div { width:170px; overflow:hidden; word-wrap:break-word; word-break:break-all;}
 tr.accountModifier .amount { width:130px; color:#006400; text-align:right; }
 tr.accountModifier .amount.negative { color:#8b0000; }
 tr.accountModifier .balance { width:80px; color:#000000; text-align:right; }
