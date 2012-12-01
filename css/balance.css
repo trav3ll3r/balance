@@ -24,5 +24,15 @@ body { font-family:Verdana,serif; font-size:12px; background-color:#efefef; }
 }
 
 div.baseModifier { background-color:#fafad2; border:1px solid #5f9ea0; margin-bottom:2px; padding:2px; }
-div.baseModifier .amount { font-size:11px; }
+div.baseModifier .amount { font-size:11px; color:#006400; }
+div.baseModifier .amount.negative { color:#8b0000; }
 div.baseModifier .frequency { font-size:10px; }
+
+table.accountModifiersTable { border:2px solid #5f9ea0; border-bottom: 0; font-size:11px; }
+tr.accountModifier td { background-color:#fafad2; padding:2px 2px 3px 2px; }
+tr.accountModifier td.bottomBorder { border-bottom:2px solid #5f9ea0; }
+tr.accountModifier .title { width:170px; }
+tr.accountModifier .amount { width:130px; color:#006400; text-align:right; }
+tr.accountModifier .amount.negative { color:#8b0000; }
+tr.accountModifier .balance { width:80px; color:#000000; text-align:right; }
+tr.accountModifier .balance.negative { color:#8b0000; }
