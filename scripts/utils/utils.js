@@ -6,7 +6,7 @@ utils = (function(){
         var result;
         result = (number < 10) ? '0' + number : number;
         return result;
-    }
+    };
 
     u.getGUID = function()
     {
@@ -25,7 +25,15 @@ utils = (function(){
                 S4() + S4() + S4()
             );
 
-    }
+    };
+
+    u.dynamicSort = function(property)
+    {
+        return function (a, b)
+        {
+            return (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        };
+    };
 
     return u;
 }());

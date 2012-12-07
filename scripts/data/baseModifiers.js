@@ -71,7 +71,7 @@ function getBaseModifiersData()
         {title:'Swinging (commuting)'       , modType:modifierType.WITHDRAWAL, amount:20,   frequency:f3, startDate:startDate, endDate:''},
         {title:'Berries (eating out)'       , modType:modifierType.WITHDRAWAL, amount:5,    frequency:f4, startDate:startDate, endDate:''},
         {title:'Magic Potion (coffee)'      , modType:modifierType.WITHDRAWAL, amount:2,    frequency:f5, startDate:startDate, endDate:''},
-        {title:'Watching Sunrise'           , modType:modifierType.WITHDRAWAL, amount:3,    frequency:f6, startDate:startDate, endDate:''}
+        {title:'Watching Sunrise'           , modType:modifierType.WITHDRAWAL, amount:0,    frequency:f6, startDate:startDate, endDate:''}
     ];
 
     return result;

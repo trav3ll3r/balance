@@ -1,4 +1,4 @@
-body { margin:0; padding:0 }
+body { margin:0; padding:20px 0 0 0 }
 div { margin:0; padding:0 }
 span { margin:0; padding:0 }
 a { margin:0; padding:0 }
@@ -30,12 +30,11 @@ div.baseModifier .amount { font-size:11px; color:#006400; }
 div.baseModifier .amount.negative { color:#8b0000; }
 div.baseModifier .frequency { font-size:10px; }
 
-table.accountModifiersTable { width:400px; border:2px solid #5f9ea0; border-bottom: 0; font-size:11px; }
-tr.accountModifier td { background-color:#fafad2; padding:2px 2px 3px 2px; }
-tr.accountModifier td.bottomBorder { border-bottom:2px solid #5f9ea0; }
-tr.accountModifier .title { width:170px; }
-tr.accountModifier .title div { width:170px; overflow:hidden; word-wrap:break-word; word-break:break-all;}
-tr.accountModifier .amount { width:130px; color:#006400; text-align:right; }
-tr.accountModifier .amount.negative { color:#8b0000; }
-tr.accountModifier .balance { width:80px; color:#000000; text-align:right; }
-tr.accountModifier .balance.negative { color:#8b0000; }
+div.accountModifier { background-color:#fafad2; padding:2px 2px 3px 2px; font-size:11px; }
+div.accountModifier.bottomBorder { border-bottom:2px solid #5f9ea0; }
+div.accountModifier .title { width:170px; }
+div.accountModifier .title div { width:170px; overflow:hidden; word-wrap:break-word; word-break:break-all;}
+div.accountModifier .amount { width:130px; color:#006400; text-align:right; }
+div.accountModifier .amount.negative { color:#8b0000; }
+div.accountModifier .balance { width:80px; color:#000000; text-align:right; font-weight:bold; }
+div.accountModifier .balance.negative { color:#8b0000; }

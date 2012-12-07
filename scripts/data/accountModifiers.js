@@ -1,22 +1,21 @@
-function AccountModifier(model)
+function AccountModifier(model, appliedDate)
 {
     var self = this;
 
     //self.id = utils.getGUID();
 
-    /* clone properties */
+    /* map properties onto AccountModifier (clone) */
     self.title     = model.title;
     self.modType   = model.modType;
     self.amount    = model.amount;
     self.frequency = model.frequency;
     self.startDate = model.startDate;
     self.endDate   = model.endDate;
+    self.appliedDate = appliedDate;
 
     /* clone functions */
     self.getAmountValue     = model.getAmountValue;
     self.getFormattedAmount = model.getFormattedAmount;
-
-
 
     self.balanceAfterModifier = null;
     self.getFormattedBalanceAfterModifier = function()
@@ -40,20 +39,18 @@ function AccountModifier(model)
 
     self.getFormattedDate = function()
     {
-        return utils.date.format(self.startDate, 'dd.mm.yyyy');
+        return utils.date.format(self.appliedDate, 'dd.mm.yyyy');
     };
 
     return self;
 }
 
-function getAccountModifiers(scenario)
+function getAccountBalance(scenario)
 {
-    var accountBalance;
     var result;
-    accountBalance = generateAccountModifiers(scenario);
 
-    //result = accountBalance.dateGroups;
-    result = accountBalance;
+    result = generateAccountModifiers(scenario);
+
     return result;
 }
 
@@ -64,14 +61,23 @@ function generateAccountModifiers(scenario)
     var accountModifier;
     var result = new AccountBalance();
     var i, j;
+    var appliedDate = null;
 
-    for (i = 0; i < 3; i++)
+    var scenarioStartDate = new Date(2012, 0, 1);   //TODO: get value off method argument (scenario)
+    var scenarioEndDate   = new Date(2012, 1, 1);   //TODO: get value off method argument (scenario)
+
+    /* generate account balance modifiers */
+    for (j = 0; j < baseModifiers.length; j++)
     {
-        for (j = 0; j < baseModifiers.length; j++)
+        baseModifier = baseModifiers[j];
+
+        appliedDate = baseModifier.startDate;
+        while (appliedDate != null && appliedDate.getTime() >= scenarioStartDate.getTime() && appliedDate.getTime() <= scenarioEndDate.getTime())
         {
-            baseModifier = baseModifiers[j];
-            accountModifier = new AccountModifier(baseModifier);
+            accountModifier = new AccountModifier(baseModifier, appliedDate);
             result.addModifier(accountModifier);
+
+            appliedDate = utils.date.getNextDate(appliedDate, baseModifier.frequency);
         }
     }
 

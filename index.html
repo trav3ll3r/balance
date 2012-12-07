@@ -14,7 +14,7 @@
 
     <script type="text/javascript" src="scripts/globals.js"></script>
     <script type="text/javascript" src="scripts/utils/utils.js"></script>
-    <script type="text/javascript" src="scripts/utils/dateFormatter.js"></script>
+    <script type="text/javascript" src="scripts/utils/utils-date.js"></script>
 
     <script type="text/javascript" src="scripts/data/baseModifiers.js"></script>
     <script type="text/javascript" src="scripts/data/accountModifiers.js"></script>
@@ -30,23 +30,28 @@
 
         <div id="forecastingList">
             <div ng-controller="AccountModifiersList">
-                <table class="accountModifiersTable" cellpadding="0" cellspacing="0">
-                    <tr class="accountModifier">
-                        <td colspan="1" class="title bottomBorder">{{ accountBalance.getFormattedStartingDate() }}</td>
-                        <td colspan="1" class="title bottomBorder">Starting balance:</td>
-                        <td colspan="1" class="balance bottomBorder" ng-class="{negative: accountBalance.startingBalance<0}">{{ accountBalance.getFormattedStartingBalance() }}</td>
-                    </tr>
-                    <tbody ng-repeat="accMod in accMods">
-                        <tr class="accountModifier">
-                            <td class="date" style="width:80px;">{{ accMod.getFormattedDate() }}</td>
-                            <td class="title" ><div>{{ accMod.title }}</div></td>
-                            <td class="amount" ng-class="{negative: accMod.getAmountValue()<0}">{{ accMod.getFormattedAmount() }}</td>
-                        </tr>
-                        <tr class="accountModifier">
-                            <td colspan="3" class="balance bottomBorder" ng-class="{negative: accMod.balanceAfterModifier<0}">{{ accMod.getFormattedBalanceAfterModifier() }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+                    <div class="accountModifier bottomBorder">
+                        <div class="fLeft date bottomBorder">{{ accountBalance.getFormattedStartingDate() }}</div>
+                        <div class="fLeft title bottomBorder"><div>Starting balance:</div></div>
+                        <div class="fRight balance bottomBorder" ng-class="{negative: accountBalance.startingBalance<0}">{{ accountBalance.getFormattedStartingBalance() }}</div>
+                        <div class="clearBoth"></div>
+                    </div>
+
+                    <div ng-repeat="balanceRow in balanceRows">
+                        <div class="accountModifier">
+                            <div class="fLeft date" style="width:80px;">{{ balanceRow.appliedDate }}</div>
+                            <div class="fLeft title" ><div>{{ balanceRow.title }}</div></div>
+                            <div class="fRight amount" ng-class="{negative: balanceRow.amount<0}">{{ balanceRow.formattedAmount }}</div>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div class="accountModifier bottomBorder">
+                            <div class="fRight balance" ng-class="{negative: balanceRow.balance<0}">{{ balanceRow.formattedBalance }}</div>
+                            <div class="clearBoth"></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
