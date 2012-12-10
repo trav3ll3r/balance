@@ -45,18 +45,14 @@ function AccountModifier(model, appliedDate)
     return self;
 }
 
-function getAccountBalance(scenario)
+function getAccountBalance(scenario, baseModifiers)
 {
-    var result;
-
-    result = generateAccountModifiers(scenario);
-
+    var result = generateAccountModifiers(scenario, baseModifiers);
     return result;
 }
 
-function generateAccountModifiers(scenario)
+function generateAccountModifiers(scenario, baseModifiers)
 {
-    var baseModifiers = getBaseModifiers();
     var baseModifier;
     var accountModifier;
     var result = new AccountBalance();
@@ -64,7 +60,7 @@ function generateAccountModifiers(scenario)
     var appliedDate = null;
 
     var scenarioStartDate = new Date(2012, 0, 1);   //TODO: get value off method argument (scenario)
-    var scenarioEndDate   = new Date(2012, 1, 1);   //TODO: get value off method argument (scenario)
+    var scenarioEndDate   = new Date(2012, 0, 16);  //TODO: get value off method argument (scenario)
 
     /* generate account balance modifiers */
     for (j = 0; j < baseModifiers.length; j++)

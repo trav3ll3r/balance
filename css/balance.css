@@ -20,7 +20,8 @@ body { font-family:Verdana,serif; font-size:12px; background-color:#efefef; }
 
 #baseModifiers
 {
-    float:right; width:200px; height:500px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
+    /*float:right;*/
+    width:200px; height:400px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
     padding:4px;
     overflow:auto;
 }

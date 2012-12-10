@@ -58,7 +58,7 @@ function getBaseModifiersData()
 {
     var f1 = new Frequency(1, timeUnit.MONTH);  // Every month TODO: on 1st
     var f2 = new Frequency(2, timeUnit.WEEK);   //'Every 2 weeks TODO: on Monday'
-    var f3 = new Frequency(1, timeUnit.WEEK);   //'Every weeks TODO: on Monday'
+    var f3 = new Frequency(1, timeUnit.WEEK);   //'Every week TODO: on Monday'
     var f4 = new Frequency(2, timeUnit.DAY);   //'Every 2 days'
     var f5 = new Frequency(1, timeUnit.DAY);   //'Every day'
     var f6 = new Frequency(1, timeUnit.DAY);   //'Every day'
@@ -69,9 +69,9 @@ function getBaseModifiersData()
         {title:'Hole in a tree trunk (rent)', modType:modifierType.WITHDRAWAL, amount:100,  frequency:f1, startDate:startDate, endDate:''},
         {title:'Bag of nuts (salary)'       , modType:modifierType.DEPOSIT   , amount:200,  frequency:f2, startDate:startDate, endDate:''},
         {title:'Swinging (commuting)'       , modType:modifierType.WITHDRAWAL, amount:20,   frequency:f3, startDate:startDate, endDate:''},
-        {title:'Berries (eating out)'       , modType:modifierType.WITHDRAWAL, amount:5,    frequency:f4, startDate:startDate, endDate:''},
-        {title:'Magic Potion (coffee)'      , modType:modifierType.WITHDRAWAL, amount:2,    frequency:f5, startDate:startDate, endDate:''},
-        {title:'Watching Sunrise'           , modType:modifierType.WITHDRAWAL, amount:0,    frequency:f6, startDate:startDate, endDate:''}
+//        {title:'Berries (eating out)'       , modType:modifierType.WITHDRAWAL, amount:5,    frequency:f4, startDate:startDate, endDate:''},
+//        {title:'Magic Potion (coffee)'      , modType:modifierType.WITHDRAWAL, amount:2,    frequency:f5, startDate:startDate, endDate:''},
+//        {title:'Watching Sunrise'           , modType:modifierType.WITHDRAWAL, amount:0,    frequency:f6, startDate:startDate, endDate:''}
     ];
 
     return result;

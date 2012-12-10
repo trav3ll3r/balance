@@ -1,20 +1,37 @@
-function BaseModifiersList($scope)
+function ListsCtrl($scope)
 {
     $scope.mods = getBaseModifiers();
+
+    $scope.scenario = new Scenario('main');
+
+    $scope.accountBalance = getAccountBalanceByScenario($scope.scenario, $scope.mods);
+    $scope.balanceRows = getAccountBalanceRows($scope.accountBalance);
+
+    $scope.addBaseModifier = function()
+    {
+        var startDate = new Date(2012, 0, 1);
+        var f2 = new Frequency(2, timeUnit.WEEK);   //'Every 2 weeks TODO: on Monday'
+        var newBaseModifier = new BaseModifier({title:$scope.modName, modType:modifierType.WITHDRAWAL, amount:113,  frequency:f2, startDate:startDate, endDate:''});
+        $scope.mods.push(newBaseModifier);
+        $scope.accountBalance = getAccountBalanceByScenario($scope.scenario, $scope.mods);
+        $scope.balanceRows = getAccountBalanceRows($scope.accountBalance);
+        $scope.modName = '';
+    };
 }
 
-function AccountModifiersList($scope)
+function getAccountBalanceByScenario(scenario, baseModifiers)
 {
-    var scenario = new Scenario('main');
-    var accountBalance;
+    var result = getAccountBalance(scenario, baseModifiers);
+    return result;
+}
+
+function getAccountBalanceRows(accountBalance)
+{
+    var result = [];
+    var i, j;
+    var sortedDateGroups;
     var accountModifiers;
     var accountModifier;
-    var i, j;
-
-    var sortedDateGroups;
-    var accountBalanceRows = [];
-
-    accountBalance = getAccountBalance(scenario);
 
     sortedDateGroups = accountBalance.dateGroups.sort(utils.dynamicSort("dateGroupSort"));
 
@@ -27,10 +44,9 @@ function AccountModifiersList($scope)
             accountBalance.currentBalance = accountBalance.currentBalance + accountModifier.getAmountValue();
             accountModifier.balanceAfterModifier = accountBalance.currentBalance;
             //TODO; create model for accountBalanceRow
-            accountBalanceRows[accountBalanceRows.length] = {appliedDate:sortedDateGroups[i].dateGroupLabel, title:accountModifier.title, amount:accountModifier.getAmountValue(), formattedAmount:accountModifier.getFormattedAmount(), balance:accountModifier.balanceAfterModifier, formattedBalance:accountModifier.getFormattedBalanceAfterModifier()};
+            result[result.length] = {appliedDate:sortedDateGroups[i].dateGroupLabel, title:accountModifier.title, amount:accountModifier.getAmountValue(), formattedAmount:accountModifier.getFormattedAmount(), balance:accountModifier.balanceAfterModifier, formattedBalance:accountModifier.getFormattedBalanceAfterModifier()};
         }
     }
 
-    $scope.accountBalance = accountBalance;
-    $scope.balanceRows = accountBalanceRows;
+    return result;
 }

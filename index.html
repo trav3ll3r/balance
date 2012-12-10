@@ -26,10 +26,10 @@
 </head>
 <body>
 
-    <div class="siteSandbox">
+    <div class="siteSandbox" ng-controller="ListsCtrl">
 
         <div id="forecastingList">
-            <div ng-controller="AccountModifiersList">
+            <div>
                 <div>
                     <div class="accountModifier bottomBorder">
                         <div class="fLeft date bottomBorder">{{ accountBalance.getFormattedStartingDate() }}</div>
@@ -55,18 +55,26 @@
             </div>
         </div>
 
-        <div id="baseModifiers">
-            <div ng-controller="BaseModifiersList">
-                <div ng-repeat="mod in mods" class="baseModifier">
-                    <div>
-                        <div class="fLeft bold">{{ mod.title }}</div>
-                        <div class="clearBoth"></div>
-                        <div class="fRight amount bold" ng-class="{negative: mod.getAmountValue()<0}">{{ mod.getFormattedAmount() }}</div>
+        <div class="fRight">
+            <div id="baseModifiers">
+                <div>
+                    <div ng-repeat="mod in mods" class="baseModifier">
+                        <div>
+                            <div class="fLeft bold">{{ mod.title }}</div>
+                            <div class="clearBoth"></div>
+                            <div class="fRight amount bold" ng-class="{negative: mod.getAmountValue()<0}">{{ mod.getFormattedAmount() }}</div>
+                            <div class="clearBoth"></div>
+                        </div>
+                        <div class="fRight frequency">{{ mod.frequency.getDescription() }}</div>
                         <div class="clearBoth"></div>
                     </div>
-                    <div class="fRight frequency">{{ mod.frequency.getDescription() }}</div>
-                    <div class="clearBoth"></div>
                 </div>
+            </div>
+            <div>
+                <form ng-submit="addBaseModifier()">
+                    <input type="text" ng-model="modName" size="20" placeholder="enter modifier name" />
+                    <input class="btn-primary" type="submit" value="Add" />
+                </form>
             </div>
         </div>
 
