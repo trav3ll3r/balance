@@ -26,9 +26,9 @@
 </head>
 <body>
 
-    <div class="siteSandbox" ng-controller="ListsCtrl">
+    <div class="siteSandbox">
 
-        <div id="forecastingList">
+        <div id="forecastingList" ng-controller="AccountForecastCtrl">
             <div>
                 <div>
                     <div class="accountModifier bottomBorder">
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="fRight">
+        <div class="fRight" ng-controller="BaseModifierListCtrl">
             <div id="baseModifiers">
                 <div>
                     <div ng-repeat="mod in mods" class="baseModifier">
@@ -70,12 +70,40 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <form ng-submit="addBaseModifier()">
-                    <input type="text" ng-model="modName" size="20" placeholder="enter modifier name" />
-                    <input class="btn-primary" type="submit" value="Add" />
+            <div ng-controller="NewBaseModCtrl">
+                <form ng-submit="create()">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="formLabel"><label for="modTitle">title</label></td>
+                            <td class="formValue"><input type="text" id="modTitle" ng-model="modTitle" required maxlength="10" placeholder="title" /></td>
+                        </tr>
+
+                        <tr>
+                            <td class="formLabel"><label for="modAmount">amount</label></td>
+                            <td class="formValue"><input type="text" id="modAmount" ng-model="modAmount" required maxlength="20" size="10" placeholder="amount" /></td>
+                        </tr>
+
+                        <tr>
+                            <td class="formLabel"><label for="modifierType">type</label></td>
+                            <td class="formValue"><select id="modifierType" ng-model="modifierType" required ng-options="mt.label for mt in modifierTypes"></select></td>
+                        </tr>
+
+                        <tr>
+                            <td class="formLabel"><label for="modFrequencyOccurrence">every</label></td>
+                            <td class="formValue">
+                                <input style="width:20px;" type="text" id="modFrequencyOccurrence" required ng-model="modFrequencyOccurrence" size="3" />
+                                <select style="width:121px;" ng-model="modFrequencyType" required ng-options="fu.label for fu in freqUnits"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input class="btn-primary" type="submit" value="Add modifier" />
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div>
+
         </div>
 
         <div class="clearBoth"></div>

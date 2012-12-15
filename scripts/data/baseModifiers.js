@@ -24,7 +24,7 @@ function BaseModifier(model)
         //TODO: implement various currencies
         var currencySymbol = '$';
 
-        result = currencySymbol + (self.amount).toFixed(2);
+        result = currencySymbol + self.amount.toFixed(2);
 
         if (self.getAmountValue() < 0)
         {

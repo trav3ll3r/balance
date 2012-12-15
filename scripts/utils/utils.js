@@ -35,5 +35,28 @@ utils = (function(){
         };
     };
 
+    u.getModifierType = function(modType)
+    {
+        switch (modType)
+        {
+            case "DEPOSIT"   : return modifierType.DEPOSIT   ; break;
+            case "WITHDRAWAL": return modifierType.WITHDRAWAL; break;
+            case "TRANSFER"  : return modifierType.TRANSFER  ; break;
+        }
+    };
+
+    u.getFrequencyType = function(frequencyType)
+    {
+        switch (frequencyType)
+        {
+            case 0: return timeUnit.ONCE ; break;
+            case 1: return timeUnit.DAY  ; break;
+            case 2: return timeUnit.WEEK ; break;
+            case 3: return timeUnit.MONTH; break;
+            case 4: return timeUnit.YEAR ; break;
+
+        }
+    };
+
     return u;
 }());

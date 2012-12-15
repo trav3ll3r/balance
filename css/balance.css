@@ -39,3 +39,11 @@ div.accountModifier .amount { width:130px; color:#006400; text-align:right; }
 div.accountModifier .amount.negative { color:#8b0000; }
 div.accountModifier .balance { width:80px; color:#000000; text-align:right; font-weight:bold; }
 div.accountModifier .balance.negative { color:#8b0000; }
+
+table.form {width:220px; font-size:10px !important;}
+table.form tr {}
+table.form tr td {font-size:10px;}
+table.form tr td.formLabel {width:60px;}
+table.form tr td.formValue {width:160px;}
+table.form tr td.formValue input {width:145px; font-size:11px;}
+table.form tr td.formValue select {width:149px; font-size:11px;}

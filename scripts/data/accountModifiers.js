@@ -79,3 +79,29 @@ function generateAccountModifiers(scenario, baseModifiers)
 
     return result;
 }
+
+function getAccountBalanceRows(accountBalance)
+{
+    var result = [];
+    var i, j;
+    var sortedDateGroups;
+    var accountModifiers;
+    var accountModifier;
+
+    sortedDateGroups = accountBalance.dateGroups.sort(utils.dynamicSort("dateGroupSort"));
+
+    for (i = 0; i < sortedDateGroups.length; i++)
+    {
+        accountModifiers = sortedDateGroups[i].accountModifiers;
+        for(j = 0; j < accountModifiers.length; j++)
+        {
+            accountModifier = accountModifiers[j];
+            accountBalance.currentBalance = accountBalance.currentBalance + accountModifier.getAmountValue();
+            accountModifier.balanceAfterModifier = accountBalance.currentBalance;
+            //TODO; create model for accountBalanceRow
+            result[result.length] = {appliedDate:sortedDateGroups[i].dateGroupLabel, title:accountModifier.title, amount:accountModifier.getAmountValue(), formattedAmount:accountModifier.getFormattedAmount(), balance:accountModifier.balanceAfterModifier, formattedBalance:accountModifier.getFormattedBalanceAfterModifier()};
+        }
+    }
+
+    return result;
+}

@@ -67,3 +67,9 @@ function AccountModDateGroup(date)
 
     return self;
 }
+
+function getAccountBalanceByScenario(scenario, baseModifiers)
+{
+    var result = getAccountBalance(scenario, baseModifiers);
+    return result;
+}

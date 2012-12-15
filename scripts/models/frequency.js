@@ -30,9 +30,9 @@ function Frequency(quantity, unitType)
 
 var timeUnit =
 {
-    ONCE : {value:0, singular:'once' , plural:'once'  },
-    DAY :  {value:1, singular:'day'  , plural:'days'  },
-    WEEK : {value:2, singular:'week' , plural:'weeks' },
-    MONTH: {value:3, singular:'month', plural:'months'},
-    YEAR:  {value:4, singular:'year' , plural:'years' }
+    ONCE : {value:1, label:'once' , singular:'once' , plural:'once'  },
+    DAY :  {value:2, label:'day(s)'  , singular:'day'  , plural:'days'  },
+    WEEK : {value:3, label:'week(s)' , singular:'week' , plural:'weeks' },
+    MONTH: {value:4, label:'month(s)', singular:'month', plural:'months'},
+    YEAR:  {value:5, label:'year(s)' , singular:'year' , plural:'years' }
 };
