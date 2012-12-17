@@ -18,9 +18,15 @@ body { font-family:Verdana,serif; font-size:12px; background-color:#efefef; }
     overflow:auto;
 }
 
+#scenarioMods
+{
+    width:220px; height:400px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
+    padding:4px;
+    overflow:auto;
+}
+
 #baseModifiers
 {
-    /*float:right;*/
     width:200px; height:400px; overflow:hidden; border:1px solid #5f9ea0; color:#000000;
     padding:4px;
     overflow:auto;

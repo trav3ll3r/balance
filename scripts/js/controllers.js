@@ -3,17 +3,15 @@
 /* ************************************* */
 function BaseModifierListCtrl($scope, $rootScope)
 {
-    $scope.mods = getBaseModifiers();
+    $rootScope.baseModifiers = getBaseModifiers();
+    $scope.mods = $rootScope.baseModifiers
 
+    /* catch and handle 'baseModifierCreated' event */
     $rootScope.$on('baseModifierCreated', function(event, args)
     {
         var newBaseModifier = args.elem;
-        $scope.mods.push(newBaseModifier);
-        $rootScope.$emit('baseModifiersListUpdated',{mods:$scope.mods});
+        $rootScope.baseModifiers.push(newBaseModifier);
     });
-
-    /* emit 'baseModifiersListUpdated' event */
-    $rootScope.$emit('baseModifiersListUpdated',{mods:$scope.mods});
 }
 // Explicitly inject stuff. This is optional unless you plan on minifying the code.
 BaseModifierListCtrl.$inject = ['$scope', '$rootScope'];
@@ -23,15 +21,15 @@ BaseModifierListCtrl.$inject = ['$scope', '$rootScope'];
 /* ************************************ */
 function AccountForecastCtrl($scope, $rootScope)
 {
-    $scope.scenario = new Scenario('main');
-
-    $rootScope.$on('baseModifiersListUpdated', function(event, args)
+    $rootScope.$on('scenarioUpdated', function(event, args)
     {
-        var baseMods = args.mods;
-        $scope.accountBalance = getAccountBalanceByScenario($scope.scenario, baseMods);
+        var _scenario = args.scenario;
+        var _baseMods = $rootScope.baseModifiers;
+        $scope.accountBalance = getAccountBalanceByScenario(_scenario, _baseMods);
         $scope.balanceRows    = getAccountBalanceRows($scope.accountBalance);
     });
 }
+// Explicitly inject stuff. This is optional unless you plan on minifying the code.
 AccountForecastCtrl.$inject = ['$scope', '$rootScope'];
 
 /* ************************************ */
@@ -64,3 +62,24 @@ function NewBaseModCtrl($scope, $rootScope)
 }
 // Explicitly inject stuff. This is optional unless you plan on minifying the code.
 NewBaseModCtrl.$inject = ['$scope', '$rootScope'];
+
+/* *********************************** */
+/* ******* SCENARIO CONTROLLER ******* */
+/* *********************************** */
+function ScenarioCtrl($scope, $rootScope)
+{
+    var _scenario = new Scenario('main');
+    _scenario.startingBalance = 5000;
+
+    $scope.scenario = _scenario;
+
+    $scope.update = function()
+    {
+        console.log('scenarioUpdated');
+
+        /* emit 'scenarioUpdated' event */
+        $rootScope.$emit('scenarioUpdated', {scenario:$scope.scenario});
+    }
+}
+// Explicitly inject stuff. This is optional unless you plan on minifying the code.
+ScenarioCtrl.$inject = ['$scope', '$rootScope'];

@@ -55,12 +55,12 @@ function generateAccountModifiers(scenario, baseModifiers)
 {
     var baseModifier;
     var accountModifier;
-    var result = new AccountBalance();
+    var result = new AccountBalance(scenario);
     var i, j;
     var appliedDate = null;
 
-    var scenarioStartDate = new Date(2012, 0, 1);   //TODO: get value off method argument (scenario)
-    var scenarioEndDate   = new Date(2012, 0, 16);  //TODO: get value off method argument (scenario)
+    var scenarioStartDate = scenario.periodStart;
+    var scenarioEndDate   = scenario.periodEnd;
 
     /* generate account balance modifiers */
     for (j = 0; j < baseModifiers.length; j++)

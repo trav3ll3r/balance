@@ -1,10 +1,11 @@
-function AccountBalance()
+function AccountBalance(scenario)
 {
     var self = this;
-    self.dateGroups = [];
-    self.startDate = new Date(2012, 0, 1);
-    self.startingBalance = 1000; //TODO: get initial value from text input (user provided)
-    self.currentBalance = 1000;
+
+    self.dateGroups      = [];
+    self.startDate       = new Date(2012, 0, 1);
+    self.startingBalance = scenario.startingBalance; //TODO: get initial value from text input (user provided)
+    self.currentBalance  = scenario.startingBalance;
 
     self.addModifier = function(accountModifier)
     {
@@ -47,7 +48,7 @@ function AccountBalance()
 
     self.getFormattedStartingBalance = function()
     {
-        return self.startingBalance.toFixed(2);
+        return parseFloat(self.startingBalance).toFixed(2);
     };
 
     return self;

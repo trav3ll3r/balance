@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" ng-app>
+<html lang="en" ng-app="balance">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
@@ -7,12 +7,15 @@
     <title>Balance</title>
 
     <link rel="stylesheet" href="css/balance.css">
+    <link rel="stylesheet" href="css/angular-ui.min.css">
 
-    <script type="text/javascript" src="scripts/library/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/library/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/library/angular/angular-loader.min.js"></script>
+    <script type="text/javascript" src="scripts/js/app.js"></script>
 
-    <script type="text/javascript" src="scripts/library/angular/controllers.js"></script>
+    <script type="text/javascript" src="scripts/library/angular/angular-ui.min.js"></script>
+    <script type="text/javascript" src="scripts/js/controllers.js"></script>
 
-    <script type="text/javascript" src="scripts/globals.js"></script>
     <script type="text/javascript" src="scripts/utils/utils.js"></script>
     <script type="text/javascript" src="scripts/utils/utils-date.js"></script>
 
@@ -55,6 +58,51 @@
             </div>
         </div>
 
+        <div class="fLeft" id="scenarioMods" ng-controller="ScenarioCtrl">
+            <form ng-submit="update()">
+                <table class="form" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="formLabel">
+                            <label for="scenarioName">name</label>
+                        </td>
+                        <td class="formValue">
+                            <input type="text" id="scenarioName" ng-model="scenario.name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formLabel">
+                            <label for="scenarioStartingBalance">balance</label>
+                        </td>
+                        <td class="formValue">
+                            <input type="text" id="scenarioStartingBalance" ng-model="scenario.startingBalance" to-number />
+                        </td>
+                    </tr>
+
+<!--
+                   <tr>
+                        <td class="formLabel">
+                            <label for="scenarioPeriodStart">start</label>
+                        </td>
+                        <td class="formValue">
+                            <input type="text" id="scenarioPeriodStart" ng-model="scenario.periodStart" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="formLabel">
+                            <label for="scenarioPeriodEnd">end</label>
+                        </td>
+                        <td class="formValue">
+                            <input type="text" id="scenarioPeriodEnd" ng-model="scenario.periodEnd" />
+                        </td>
+                    </tr>
+-->
+                </table>
+
+                <input class="btn-primary" type="submit" value="Show" />
+            </form>
+        </div>
+
         <div class="fRight" ng-controller="BaseModifierListCtrl">
             <div id="baseModifiers">
                 <div>
@@ -70,6 +118,7 @@
                     </div>
                 </div>
             </div>
+
             <div ng-controller="NewBaseModCtrl">
                 <form ng-submit="create()">
                     <table class="form" border="0" cellpadding="0" cellspacing="0">
@@ -80,7 +129,7 @@
 
                         <tr>
                             <td class="formLabel"><label for="modAmount">amount</label></td>
-                            <td class="formValue"><input type="text" id="modAmount" ng-model="modAmount" required maxlength="20" size="10" placeholder="amount" /></td>
+                            <td class="formValue"><input type="text" id="modAmount" ng-model="modAmount" to-number required maxlength="20" size="10" placeholder="amount" /></td>
                         </tr>
 
                         <tr>
@@ -91,7 +140,7 @@
                         <tr>
                             <td class="formLabel"><label for="modFrequencyOccurrence">every</label></td>
                             <td class="formValue">
-                                <input style="width:20px;" type="text" id="modFrequencyOccurrence" required ng-model="modFrequencyOccurrence" size="3" />
+                                <input style="width:20px;" type="text" to-number id="modFrequencyOccurrence" required ng-model="modFrequencyOccurrence" size="3" />
                                 <select style="width:121px;" ng-model="modFrequencyType" required ng-options="fu.label for fu in freqUnits"></select>
                             </td>
                         </tr>
